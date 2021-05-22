@@ -9,10 +9,13 @@ export default {
 </script>
 
 <style lang="stylus">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap')
+
 body
   margin 0
   overflow scroll
   overflow-x hidden
+  font-family 'Noto Sans', sans-serif
 
 *
   box-sizing border-box
