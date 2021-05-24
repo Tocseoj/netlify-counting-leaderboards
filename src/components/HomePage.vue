@@ -48,35 +48,90 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.$refs["top-of-page"].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "start",
+    });
+  },
 };
 </script>
 
 <template>
-  <h1>Top Counters this week</h1>
-  <BarGraph :chartdata="counts" />
-  <h1>Top Counters all time</h1>
-  <BarGraph :chartdata="counts" />
-  <h2>Search for your stats</h2>
-  <input type="text" placeholder="Username" />
-  <table v-for="user in foundUsers">
-    <tr>
-      <th>Total count</th>
-      <th>Wrong numbers</th>
-      <th>Hasty</th>
-      <th>Not a number</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-  </table>
+  <div class="chevron top green"></div>
+  <div class="case green">
+    <div ref="top-of-page" class="top-bar"></div>
+    <h1>Top Counters this week</h1>
+    <BarGraph :chartdata="counts" />
+  </div>
+  <div class="chevron bottom green"></div>
+
+  <div class="capsule top blue"></div>
+  <div class="case blue">
+    <h1>Top Counters all time</h1>
+    <BarGraph :chartdata="counts" />
+  </div>
+  <div class="capsule bottom blue"></div>
+
+  <div class="case yellow">
+    <h2>Search for your stats</h2>
+    <input type="text" placeholder="Username" />
+    <table v-for="user in foundUsers">
+      <tr>
+        <th>Total count</th>
+        <th>Wrong numbers</th>
+        <th>Hasty</th>
+        <th>Not a number</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+    </table>
+  </div>
 
   <div class="bottom-bar"></div>
 </template>
 
 <style lang="stylus" scoped>
+@import '../global'
+
 .bottom-bar
   margin-top 5rem
+.top-bar
+  margin-bottom 5rem
+
+.case
+  &.green
+    background-color green-sheen
+  &.blue
+    background-color teal-blue
+  &.yellow
+    background-color beige
+
+.chevron
+  border 383px solid transparent
+  &.top.green
+    border-bottom-color green-sheen
+  &.bottom.green
+    border-top-color green-sheen
+  &.top.blue
+    border-bottom-color teal-blue
+  &.bottom.blue
+    border-top-color teal-blue
+
+.capsule
+  &.top.blue
+    margin-top 383px
+    border-top 383px solid teal-blue
+    border-top-left-radius 383px
+    border-top-right-radius 383px
+  &.bottom.blue
+    margin-bottom 383px
+    border-bottom 383px solid teal-blue
+    border-bottom-left-radius 383px
+    border-bottom-right-radius 383px
 </style>

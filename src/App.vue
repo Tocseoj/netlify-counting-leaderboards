@@ -1,21 +1,24 @@
-<template>
-  <HomePage />
-</template>
-
 <script>
 export default {
   name: "App",
 };
 </script>
 
+<template>
+  <HomePage />
+</template>
+
 <style lang="stylus">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap')
+@import global
 
 body
   margin 0
   overflow scroll
   overflow-x hidden
   font-family 'Noto Sans', sans-serif
+  background-color charleston-green
+  //overscroll-behavior none
 
 *
   box-sizing border-box
