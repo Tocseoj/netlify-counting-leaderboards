@@ -49,11 +49,11 @@ export default {
     };
   },
   mounted() {
-    this.$refs["top-of-page"].scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "start",
-    });
+    // this.$refs["top-of-page"].scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "start",
+    //   inline: "start",
+    // });
   },
 };
 </script>
@@ -61,9 +61,12 @@ export default {
 <template>
   <div class="chevron top green"></div>
   <div class="case green">
-    <div ref="top-of-page" class="top-bar"></div>
-    <h1>Top Counters this week</h1>
-    <BarGraph :chartdata="counts" />
+    <h1 ref="top-of-page">Top Counters this week</h1>
+    <div class="leaderboard-grid">
+      <div class="podium second ash-gray"></div>
+      <div class="podium first teal-blue"></div>
+      <div class="podium third beige"></div>
+    </div>
   </div>
   <div class="chevron bottom green"></div>
 
@@ -104,6 +107,42 @@ export default {
 .top-bar
   margin-bottom 5rem
 
+.leaderboard-grid
+  display: grid;
+  grid-template-columns: 5% 30% 30% 30% 5%;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas:
+    ". .      first .     ."\
+    ". second first .     ."\
+    ". second first third .";
+
+
+.first
+  grid-area: first;
+.second
+  grid-area second
+.third
+  grid-area third
+
+.podium
+  // margin-left 5px
+  // margin-right 5px
+  border-top-left-radius 10px
+  border-top-right-radius 10px
+  border solid green-sheen 5px
+  border-bottom-color charleston-green
+
+.charleston-green
+  background-color charleston-green
+.teal-blue
+  background-color teal-blue
+.green-sheen
+  background-color green-sheen
+.ash-gray
+  background-color ash-gray
+.beige
+  background-color beige
+
 .case
   &.green
     background-color green-sheen
@@ -114,23 +153,25 @@ export default {
 
 .chevron
   border 383px solid transparent
-  &.top.green
-    border-bottom-color green-sheen
-  &.bottom.green
-    border-top-color green-sheen
-  &.top.blue
-    border-bottom-color teal-blue
-  &.bottom.blue
-    border-top-color teal-blue
+  &.top
+    margin-top -383px
+    &.green
+      border-bottom-color green-sheen
+    &.blue
+      border-bottom-color teal-blue
+  &.bottom
+    margin-bottom -383px
+    &.green
+      border-top-color green-sheen
+    &.blue
+      border-top-color teal-blue
 
 .capsule
   &.top.blue
-    margin-top 383px
     border-top 383px solid teal-blue
     border-top-left-radius 383px
     border-top-right-radius 383px
   &.bottom.blue
-    margin-bottom 383px
     border-bottom 383px solid teal-blue
     border-bottom-left-radius 383px
     border-bottom-right-radius 383px
